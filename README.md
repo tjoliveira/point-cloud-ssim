@@ -4,7 +4,7 @@ This repository contains a python implementation of the point cloud structural s
 
 Alexiou, E., & Ebrahimi, T. (2020). Towards a Point Cloud Structural Similarity Metric. 2020 IEEE International Conference on Multimedia and Expo Workshops, ICMEW 2020, 1–6. https://doi.org/10.1109/ICMEW46912.2020.9106005
 
-The implementation is based on the [Matlab implementation] (https://github.com/mmspg/pointssim) disclosed in the same paper.
+The implementation is based on the [Matlab implementation](https://github.com/mmspg/pointssim) disclosed in the same paper.
 
 ## Install environment
 
