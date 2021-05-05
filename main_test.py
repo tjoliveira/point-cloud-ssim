@@ -7,13 +7,13 @@ NUM_POINTS = 10000
 
 
 pcA = read_point_cloud_from_stl_file(
-    'train/tr_01.stl',
+    'bunny/data/bun000.ply',
     num_points= NUM_POINTS,
     outlier_removal= False,
 )
 
 pcB = read_point_cloud_from_stl_file(
-    'train/tr_02.stl',
+    'bunny/data/bun045.ply',
     num_points= NUM_POINTS,
     outlier_removal= False,
 )
