@@ -1,7 +1,7 @@
 import argparse
 import numpy as np
 
-from registration_utils import read_point_cloud_from_stl_file, align
+from registration_utils import read_point_cloud_from_ply_file, align
 from ssim_utils import pc_ssim
 
 parser = argparse.ArgumentParser()
@@ -45,29 +45,31 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-print('Number of points: {}:'.format(args.num_points))
+print('Number of points: {}'.format(args.num_points))
 print('Neighborhood size: {}'.format(args.neighborhood_size))
 print('Feature: {}'.format(args.feature))
 print('Reference: {}'.format(args.ref))
 print('Estimators: {}'.format(args.estimators))
 print('Pooling methods: {}'.format(args.pooling_methods))
 
-pcA = read_point_cloud_from_stl_file(
+pcA = read_point_cloud_from_ply_file(
     args.pcA,
     num_points= args.num_points,
     outlier_removal= False,
 )
 
-pcB = read_point_cloud_from_stl_file(
+pcB = read_point_cloud_from_ply_file(
     args.pcB,
     num_points= args.num_points,
     outlier_removal= False,
 )
 
-pcB = align(pcB, pcA)
-
 pcA.estimate_normals()
 pcB.estimate_normals()
+
+pcB = align(pcB, pcA)
+
+
 
 score = pc_ssim(
     pcA,

@@ -100,3 +100,12 @@ def read_point_cloud_from_stl_file(filepath, num_points=1024, outlier_removal=Tr
         )
     return pc
 
+def read_point_cloud_from_ply_file(filepath, num_points=1024, outlier_removal=True):
+    pc = o3d.io.read_point_cloud(filepath)
+    if outlier_removal:
+        pc, ind = pc.remove_statistical_outlier(
+            nb_neighbors=20,
+            std_ratio=2.0
+        )
+    return pc
+

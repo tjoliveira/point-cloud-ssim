@@ -120,7 +120,7 @@ def pc_ssim(pcA, pcB, neighborhood_size= 12, feature='geometry', ref=0,
         curv_quant_B = estimate_curvature(points_B, ind_B)
 
         ssim = ssim_score(
-            curv_quant_A[:, 1:], 
+            curv_quant_A, 
             curv_quant_B[:, 1:],
             ind_BA,
             ind_AB,
@@ -259,6 +259,15 @@ def error_map(f_map_Y, f_map_X, ind_YX, const):
     return error_map_YX
 
 def estimate_curvature(pc_points, points_x_neighbors):
+    """Return curvature estimations based on their respective neighborhoods.
+
+    Args:
+        pc_points (arr): Points in the point cloud. The dimensions are NUM_POINTSx3.
+        points_x_neighbors (arr): Points and indices of their neighbors. The dimensions are NUM_POINTSxNEIGHBORS.
+
+    Returns:
+        arr: Curvature values of the neighborhood for each point. The dimensions are NUM_POINTSxNEIGHBORS.
+    """
 
     curvature = np.zeros(len(pc_points))
     neighbor_point_coordinates = pc_points[points_x_neighbors]
@@ -280,6 +289,15 @@ def estimate_curvature(pc_points, points_x_neighbors):
 
 
 def pooling(q_map, pooling_methods):
+    """Score of a point cloud based on different pooling methods.
+
+    Args:
+        q_map (arr): Quality map of a point cloud. 
+        pooling_methods (list): List of pooling methods.
+
+    Returns:
+        score: Quality score of a point cloud, per pooling method. The dimensions are 1xPOOLING.
+    """
 
     score = np.zeros(len(pooling_methods))
 
