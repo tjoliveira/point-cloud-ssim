@@ -12,7 +12,7 @@ Assumes poetry is installed.
 
 ```
 cd point-cloud-ssim
-poetry shell
+poetry install
 ```
 
 ## Calculate the structural similarity score between two point clouds
