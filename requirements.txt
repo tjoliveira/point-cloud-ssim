@@ -1,3 +1,0 @@
-open3d==0.12.0
-numpy==1.18.5
-scikit_learn==0.24.2
